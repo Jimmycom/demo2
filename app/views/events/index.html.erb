@@ -1,0 +1,17 @@
+<ul>
+	<% @events.each do |event|%>
+	<li>
+		<%= link_to event.name, event_path(event)%>
+		<%= link_to("Edit", edit_event_path(event))%>
+		<%= link_to("Delete", event_path(event), :method => :delete)%>
+	</li>
+	<% end %>
+</ul>
+<%= button_to("New event", new_event_path, :method => :get)%>
+
+<% if user_signed_in? %>
+<p> The user is loged in. </p>
+<% if can? :manage, @events %>
+
+<% end %>
+<% end %>
